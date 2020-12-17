@@ -237,6 +237,8 @@ Function Generate_Menu_Structure()
 	Call AddSeperator(AutomationMenu)
 	Call AddMenu("Placement", AutomationMenu)
 	Call AddSeperator(AutomationMenu)
+	Call AddMenu("View", AutomationMenu)
+	Call AddSeperator(AutomationMenu)
 	Call AddButton("Milbitt Engineering - www.milbitt.com", "", AutomationMenu, True) 'keep this line for credit!
 End Function
 Generate_Menu_Structure()
@@ -296,4 +298,23 @@ End Function
 Generate_RB_SelectedParts()
 
 
+Function Generate_View_Menu()
+	If AutomationMenu Is Nothing Then
+		Exit Function
+	End If
+
+	Dim TheMenu
+	Set TheMenu = AddMenu("View", AutomationMenu)
+
+	Call AddButton("Zoom to Cursor", "xPCB_ZoomToCursor", TheMenu, False)
+	AddKeyBindingForMenuCmd "Ctrl+Shift+C", "Milbitt Automation->View->Zoom to Cursor"
+End Function
+Generate_View_Menu()
+
+Function xPCB_ZoomToCursor(nId)
+	Set pcbDoc = GetLicensedDoc(pcbApp)
+	Dim offset
+	offset = 500
+	Call pcbDoc.ActiveView.SetExtents(pcbDoc.ActiveViewEx.MousePositionX(epcbUnitMils) - offset, pcbDoc.ActiveViewEx.MousePositionY(epcbUnitMils), pcbDoc.ActiveViewEx.MousePositionX(epcbUnitMils) + offset, pcbDoc.ActiveViewEx.MousePositionY(epcbUnitMils), epcbUnitMils)
+End Function
 
