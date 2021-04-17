@@ -239,6 +239,8 @@ Function Generate_Menu_Structure()
 	Call AddSeperator(AutomationMenu)
 	Call AddMenu("View", AutomationMenu)
 	Call AddSeperator(AutomationMenu)
+	Call AddMenu("Mounting Holes", AutomationMenu)
+	Call AddSeperator(AutomationMenu)
 	Call AddButton("Milbitt Engineering - www.milbitt.com", "", AutomationMenu, True) 'keep this line for credit!
 End Function
 Generate_Menu_Structure()
@@ -296,6 +298,19 @@ Function Generate_RB_SelectedParts()
 	
 End Function
 Generate_RB_SelectedParts()
+
+
+''' Automation -> Mounting Holes
+Function Generate_Placement_Menu()
+	If AutomationMenu Is Nothing Then
+		Exit Function
+	End If
+
+	Dim TheMenu
+	Set TheMenu = AddMenu("Mounting Holes", AutomationMenu)
+	Call AddLauncherButton("Shave Mounting Holes", "Mentor_MountingHole_Shaver\Mentor_MountingHole_Shaver_{arch}.exe", TheMenu, False, "")
+End Function
+Generate_Placement_Menu()
 
 
 Function Generate_View_Menu()
