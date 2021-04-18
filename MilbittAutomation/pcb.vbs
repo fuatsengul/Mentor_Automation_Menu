@@ -301,7 +301,7 @@ Generate_RB_SelectedParts()
 
 
 ''' Automation -> Mounting Holes
-Function Generate_Placement_Menu()
+Function Generate_MountingHoles_Menu()
 	If AutomationMenu Is Nothing Then
 		Exit Function
 	End If
@@ -310,7 +310,7 @@ Function Generate_Placement_Menu()
 	Set TheMenu = AddMenu("Mounting Holes", AutomationMenu)
 	Call AddLauncherButton("Shave Mounting Holes", "Mentor_MountingHole_Shaver\Mentor_MountingHole_Shaver_{arch}.exe", TheMenu, False, "")
 End Function
-Generate_Placement_Menu()
+Generate_MountingHoles_Menu()
 
 
 Function Generate_View_Menu()
